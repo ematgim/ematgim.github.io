@@ -19,14 +19,14 @@ export const ContactSection = () => {
         </p>
         
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-          <a href="mailto:emilio@dev.com" className="w-full md:w-auto px-12 py-6 bg-green-500 text-[#0a0a0a] rounded-2xl font-black text-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(34,197,94,0.25)]">
+          <a href="mailto:ematgim@gmail.com" className="w-full md:w-auto px-12 py-6 bg-green-500 text-[#0a0a0a] rounded-2xl font-black text-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(34,197,94,0.25)]">
             {t.contact.cta} <ExternalLink size={24} />
           </a>
           <div className="flex gap-4">
-            <a href="#" className="p-5 bg-gray-900 rounded-2xl border border-gray-800 hover:text-green-500 hover:border-green-500/50 transition-all shadow-xl">
+            <a href="https://www.linkedin.com/in/emilio-javier-mateo-gimenez/" target="_blank" rel="noopener noreferrer" className="p-5 bg-gray-900 rounded-2xl border border-gray-800 hover:text-green-500 hover:border-green-500/50 transition-all shadow-xl">
               <Linkedin size={28} />
             </a>
-            <a href="#" className="p-5 bg-gray-900 rounded-2xl border border-gray-800 hover:text-green-500 hover:border-green-500/50 transition-all shadow-xl">
+            <a href="https://github.com/ematgim" target="_blank" rel="noopener noreferrer" className="p-5 bg-gray-900 rounded-2xl border border-gray-800 hover:text-green-500 hover:border-green-500/50 transition-all shadow-xl">
               <Github size={28} />
             </a>
           </div>
