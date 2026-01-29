@@ -18,7 +18,7 @@ export const SECTIONS = ['home', 'about', 'services', 'experience', 'contact'];
 
 export const TECH_STACK: TechStackProps[] = [
   { name: 'Angular / Vue.js', icon: <Layers className="text-red-500" /> },
-  { name: 'Node.js / Java', icon: <Cpu className="text-green-500" /> },
+  { name: 'NestJs / Java', icon: <Cpu className="text-green-500" /> },
   { name: 'SAP Integration', icon: <Zap className="text-yellow-400" /> },
   { name: 'K8s / Docker Swarm', icon: <Box className="text-blue-400" /> },
   { name: 'CI / CD Pipelines', icon: <RefreshCcw className="text-emerald-400" /> },
@@ -48,9 +48,9 @@ export const EXPERIENCE: ExperienceProps[] = [
     company: "Power Electronics",
     role: "Senior Full Stack Developer",
     period: "Oct 2025 - Actualidad",
-    milestone: "Evolución Sistémica: Power On Support",
-    desc: "Evoluciono la plataforma neurálgica de soporte técnico y gestión de stock. Optimización del código core mediante Node.js y Angular, garantizando fiabilidad absoluta e integración fluida con SAP y MongoDB.",
-    tags: ["Node.js", "Angular", "MongoDB", "SAP", "CI/CD"],
+    milestone: "Evolución de Plataformas Críticas",
+    desc: "Especializado en la evolución de plataformas críticas de soporte y logística, asegurando la integridad de datos y la sincronización en tiempo real con sistemas ERP líderes.",
+    tags: ["NestJs", "Angular", "MongoDB", "SAP", "CI/CD"],
     icon: <Battery className="text-green-400" />
   },
   {

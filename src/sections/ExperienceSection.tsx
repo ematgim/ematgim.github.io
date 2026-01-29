@@ -11,7 +11,7 @@ export const ExperienceSection = () => {
       period: t.experience.exp1Period,
       milestone: t.experience.exp1Milestone,
       desc: t.experience.exp1Desc,
-      tags: ['Node.js', 'Angular', 'MongoDB', 'SAP', 'CI/CD'],
+      tags: ['NestJs', 'Angular', 'MongoDB', 'SAP', 'CI/CD'],
       icon: <Battery className="text-green-400" />
     },
     {
@@ -73,7 +73,7 @@ export const ExperienceSection = () => {
                   <p className="text-gray-400 mb-8 text-lg leading-relaxed font-light">{job.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {job.tags.map(tag => (
-                      <span key={tag} className={`px-4 py-1.5 text-[10px] font-bold font-mono border rounded-full tracking-wider ${['Kubernetes', 'SAP', 'Node.js', 'Architecture', 'Docker Swarm'].includes(tag) ? 'bg-green-500/5 border-green-500/40 text-green-400' : 'bg-black border-gray-800 text-gray-500'}`}>
+                      <span key={tag} className={`px-4 py-1.5 text-[10px] font-bold font-mono border rounded-full tracking-wider ${['Kubernetes', 'SAP', 'NestJs', 'Architecture', 'Docker Swarm'].includes(tag) ? 'bg-green-500/5 border-green-500/40 text-green-400' : 'bg-black border-gray-800 text-gray-500'}`}>
                         {tag}
                       </span>
                     ))}
