@@ -67,6 +67,16 @@ export const Navbar = ({ isScrolled, activeSection }: NavbarProps) => {
             {t.nav.consultoria}
           </a>
         </div>
+
+        <div className="flex md:hidden items-center gap-4">
+          <button
+            onClick={toggleLanguage}
+            className="p-2 rounded-lg border border-gray-800 text-gray-400 hover:border-green-500/50 hover:text-green-400 transition-all"
+            title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+          >
+            <Languages size={18} />
+          </button>
+        </div>
       </div>
     </nav>
   );
