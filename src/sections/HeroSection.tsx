@@ -1,7 +1,10 @@
 import { ChevronRight } from 'lucide-react';
 import profileImage from '../assets/profile.jpg';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export const HeroSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <header id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
@@ -18,23 +21,23 @@ export const HeroSection = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              INGENIERÍA PARA ENTORNOS DE MISIÓN CRÍTICA
+              {t.hero.badge}
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-8">
-              Transformo Complejidad Técnica en 
+              {t.hero.title1}{' '}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">
-                Ventaja Competitiva.
+                {t.hero.title2}
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed font-light border-l-2 border-green-500 pl-6 max-w-2xl">
-              "No solo escribo código; diseño la arquitectura que sostiene tu negocio. 6 años blindando la escalabilidad de líderes industriales en energía, logística mundial y biotecnología."
+              {t.hero.subtitle}
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="#contact" className="px-8 py-4 bg-green-500 hover:bg-green-400 text-[#0a0a0a] rounded font-bold transition-all flex items-center gap-2 shadow-lg shadow-green-500/20">
-                Hablemos <ChevronRight size={18} />
+                {t.hero.cta1} <ChevronRight size={18} />
               </a>
               <a href="#experience" className="px-8 py-4 bg-gray-900 border border-gray-800 hover:border-gray-600 text-white rounded font-bold transition-all">
-                Explorar hitos técnicos
+                {t.hero.cta2}
               </a>
             </div>
           </div>
@@ -49,7 +52,7 @@ export const HeroSection = () => {
               <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-gray-800 bg-gray-900 group-hover:border-green-500/50 transition-all duration-500 shadow-2xl">
                 <img 
                   src={profileImage} 
-                  alt="Emilio - Senior Full Stack Developer"
+                  alt={t.hero.imageAlt}
                   className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
                 />
                 {/* Overlay sutil */}
@@ -57,8 +60,8 @@ export const HeroSection = () => {
                 
                 {/* Etiqueta flotante */}
                 <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/60 backdrop-blur-md border border-white/10 rounded-xl">
-                  <p className="text-xs font-mono text-green-400 mb-1">Status</p>
-                  <p className="text-sm font-bold text-white uppercase tracking-wider">Available for Consulting</p>
+                  <p className="text-xs font-mono text-green-400 mb-1">{t.hero.statusLabel}</p>
+                  <p className="text-sm font-bold text-white uppercase tracking-wider">{t.hero.statusText}</p>
                 </div>
               </div>
 

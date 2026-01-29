@@ -1,16 +1,58 @@
-import { EXPERIENCE } from '../constants/data';
+import { Battery, Anchor, Dna, Package } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export const ExperienceSection = () => {
+  const { t } = useLanguage();
+  
+  const experiences = [
+    {
+      company: t.experience.exp1Company,
+      role: t.experience.exp1Role,
+      period: t.experience.exp1Period,
+      milestone: t.experience.exp1Milestone,
+      desc: t.experience.exp1Desc,
+      tags: ['Node.js', 'Angular', 'MongoDB', 'SAP', 'CI/CD'],
+      icon: <Battery className="text-green-400" />
+    },
+    {
+      company: t.experience.exp2Company,
+      role: t.experience.exp2Role,
+      period: t.experience.exp2Period,
+      milestone: t.experience.exp2Milestone,
+      desc: t.experience.exp2Desc,
+      tags: ['Docker Swarm', 'MariaDB', 'SAP', 'Spring Boot', 'Port APIs'],
+      icon: <Anchor className="text-blue-400" />
+    },
+    {
+      company: t.experience.exp3Company,
+      role: t.experience.exp3Role,
+      period: t.experience.exp3Period,
+      milestone: t.experience.exp3Milestone,
+      desc: t.experience.exp3Desc,
+      tags: ['Kubernetes', 'Kafka', 'Java', 'MongoDB', 'Big Data'],
+      icon: <Dna className="text-red-400" />
+    },
+    {
+      company: t.experience.exp4Company,
+      role: t.experience.exp4Role,
+      period: t.experience.exp4Period,
+      milestone: t.experience.exp4Milestone,
+      desc: t.experience.exp4Desc,
+      tags: ['Oracle', 'PL/SQL', 'Vue.js', 'Spring'],
+      icon: <Package className="text-orange-400" />
+    }
+  ];
+  
   return (
     <section id="experience" className="py-24 bg-black relative">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold mb-20 flex items-center gap-4">
           <span className="text-green-500 font-mono text-xl">03.</span> 
-          Trayectoria en Sistemas de Misión Crítica
+          {t.experience.title}
         </h2>
 
         <div className="space-y-20">
-          {EXPERIENCE.map((job, i) => (
+          {experiences.map((job, i) => (
             <div key={i} className="group relative pl-10 md:pl-0 border-l border-gray-800 md:border-l-0">
               <div className="md:grid md:grid-cols-12 gap-10">
                 <div className="md:col-span-3 mb-6 md:mb-0">

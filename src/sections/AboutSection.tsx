@@ -1,7 +1,10 @@
 import { TrendingUp, ShieldCheck, Target } from 'lucide-react';
 import { TECH_STACK } from '../constants/data';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export const AboutSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="about" className="py-24 border-y border-gray-900 bg-[#0c0c0c]">
       <div className="max-w-6xl mx-auto px-6">
@@ -9,32 +12,26 @@ export const AboutSection = () => {
           <div>
             <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
               <span className="text-green-500 font-mono">01.</span> 
-              El Código es el Medio, el Resultado el Fin.
+              {t.about.title}
             </h2>
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
-              <p>
-                Mi enfoque es pragmático: elimino la fricción técnica para maximizar la eficiencia operativa. En <strong className="text-white">Power Electronics</strong>, mi misión es evolucionar el código core de <strong className="text-white">Power On Support</strong>, asegurando que el stock y el soporte técnico escalen sin errores.
-              </p>
-              <p>
-                Domino el ciclo completo: desde la orquestación en <strong className="text-white">Kubernetes</strong> hasta la integración profunda con <strong className="text-white">SAP</strong>. He orquestado datos genómicos masivos y flujos logísticos portuarios donde cada milisegundo cuenta.
-              </p>
-              <p>
-                Entiendo la tecnología como un activo financiero. Mi trabajo es garantizar que ese activo sea <strong className="text-white">fiable, seguro y extremadamente escalable</strong>.
-              </p>
+              <p dangerouslySetInnerHTML={{ __html: t.about.paragraph1 }} />
+              <p dangerouslySetInnerHTML={{ __html: t.about.paragraph2 }} />
+              <p dangerouslySetInnerHTML={{ __html: t.about.paragraph3 }} />
             </div>
             
             <div className="grid grid-cols-3 gap-6 mt-12">
               <div className="text-center group">
                 <TrendingUp className="text-green-500 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
-                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">Escalabilidad Industrial</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">{t.about.value1}</span>
               </div>
               <div className="text-center group">
                 <ShieldCheck className="text-green-500 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
-                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">Fiabilidad Crítica</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">{t.about.value2}</span>
               </div>
               <div className="text-center group">
                 <Target className="text-green-500 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
-                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">Foco en Resultados</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">{t.about.value3}</span>
               </div>
             </div>
           </div>
