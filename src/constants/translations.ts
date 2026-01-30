@@ -17,8 +17,8 @@ export const translations = {
       cta1: 'Hablemos',
       cta2: 'Explorar hitos técnicos',
       imageAlt: 'Emilio - Senior Full Stack Developer',
-      statusLabel: 'Status',
-      statusText: 'Available for Consulting',
+      statusLabel: 'Software Architect & Full Stack Engineer',
+      statusText: 'Emilio Javier Mateo Giménez',
     },
     // About Section
     about: {
@@ -90,8 +90,8 @@ export const translations = {
       cta1: 'Let\'s Talk',
       cta2: 'Explore Technical Milestones',
       imageAlt: 'Emilio - Senior Full Stack Developer',
-      statusLabel: 'Status',
-      statusText: 'Available for Consulting',
+      statusLabel: 'Software Architect & Full Stack Engineer',
+      statusText: 'Emilio Javier Mateo Giménez',
     },
     // About Section
     about: {
