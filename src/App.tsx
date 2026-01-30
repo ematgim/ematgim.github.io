@@ -1,6 +1,6 @@
 import { useScrollTracking } from './hooks/useScrollTracking';
 import { SECTIONS } from './constants/data';
-import { Navbar } from './components/Navbar';
+import { Navbar, FloatingChat } from './components';
 import { Footer } from './components/Footer';
 import { HeroSection } from './sections/HeroSection';
 import { AboutSection } from './sections/AboutSection';
@@ -20,6 +20,7 @@ const App = () => {
       <ExperienceSection />
       <ContactSection />
       <Footer />
+      <FloatingChat />
     </div>
   );
 };
