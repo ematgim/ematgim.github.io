@@ -8,6 +8,10 @@ permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   deploy-preview:
     if: github.event.action != 'closed'
@@ -27,8 +31,8 @@ jobs:
       
       - name: Build with PR-specific base path
         run: |
-          # Set base path for the PR preview
-          export VITE_BASE_PATH="/pr-preview/pr-${{ github.event.pull_request.number }}/"
+          # Set base path for the PR preview (without trailing slash for consistency)
+          export VITE_BASE_PATH="/pr-preview/pr-${{ github.event.pull_request.number }}"
           npm run build
         env:
           NODE_ENV: production
@@ -39,29 +43,38 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Clone gh-pages branch
-          git clone --branch gh-pages --single-branch https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git gh-pages-repo
+          # Clone gh-pages branch with depth 1 for efficiency
+          git clone --depth 1 --branch gh-pages --single-branch https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git gh-pages-repo
           
           # Create PR preview directory
           mkdir -p gh-pages-repo/pr-preview/pr-${{ github.event.pull_request.number }}
           
-          # Copy built files
+          # Remove old content and copy new built files
+          rm -rf gh-pages-repo/pr-preview/pr-${{ github.event.pull_request.number }}/*
           cp -r dist/* gh-pages-repo/pr-preview/pr-${{ github.event.pull_request.number }}/
           
           # Commit and push
           cd gh-pages-repo
           git add .
-          git commit -m "Deploy preview for PR #${{ github.event.pull_request.number }}" || echo "No changes to commit"
-          git push
+          
+          # Check if there are changes to commit
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy preview for PR #${{ github.event.pull_request.number }}"
+            git push || {
+              echo "Failed to push changes to gh-pages"
+              exit 1
+            }
+          fi
       
       - name: Comment on PR with preview link
         uses: actions/github-script@v7
         with:
           script: |
             const prNumber = context.issue.number;
-            const repoName = context.repo.repo;
             const owner = context.repo.owner;
-            const previewUrl = `https://${owner}.github.io/${repoName}/pr-preview/pr-${prNumber}/`;
+            const previewUrl = `https://${owner}.github.io/pr-preview/pr-${prNumber}/`;
             
             const comment = `## 🚀 Preview Deployment
             
@@ -82,7 +95,7 @@ jobs:
             });
             
             const botComment = comments.find(comment => 
-              comment.user.type === 'Bot' && 
+              comment.user.login === 'github-actions[bot]' && 
               comment.body.includes('Preview Deployment')
             );
             
@@ -115,6 +128,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Remove PR preview directory
+        id: cleanup
         run: |
           # Configure git
           git config --global user.name "github-actions[bot]"
@@ -126,12 +140,15 @@ jobs:
             git add .
             git commit -m "Clean up preview for PR #${{ github.event.pull_request.number }}"
             git push
+            echo "cleaned=true" >> $GITHUB_OUTPUT
             echo "Preview cleaned up successfully"
           else
+            echo "cleaned=false" >> $GITHUB_OUTPUT
             echo "No preview directory found to clean up"
           fi
       
       - name: Comment on PR about cleanup
+        if: steps.cleanup.outputs.cleaned == 'true'
         uses: actions/github-script@v7
         with:
           script: |
