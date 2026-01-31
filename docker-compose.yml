@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Ollama - Servidor de modelos local
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-server
+    ports:
+      - '11434:11434'
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - portfolio-network
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:11434/api/tags']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # API - Backend de la aplicación
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    container_name: portfolio-api
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+      - LOCAL_MODEL_URL=http://ollama:11434
+      - NODE_ENV=production
+    depends_on:
+      ollama:
+        condition: service_healthy
+    networks:
+      - portfolio-network
+    volumes:
+      - ./apps/api/src:/app/src
+
+volumes:
+  ollama_data:
+    driver: local
+
+networks:
+  portfolio-network:
+    driver: bridge

@@ -3741,6 +3741,11 @@
     "api": [
       {
         "source": "api",
+        "target": "npm:axios",
+        "type": "static"
+      },
+      {
+        "source": "api",
         "target": "npm:cors",
         "type": "static"
       },

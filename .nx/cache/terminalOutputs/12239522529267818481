@@ -1,0 +1,6 @@
+
+> api@1.0.0 dev
+> node dist/main.js
+
+🚀 API running on http://localhost:3000
+📋 Health check: http://localhost:3000/api/health

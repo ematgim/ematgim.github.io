@@ -14,44 +14,48 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "tsconfig.json",
-        "hash": "746105625540072805"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "8716264085218240886"
-      },
-      {
-        "file": "package.json",
-        "hash": "12153622752417788785"
-      },
-      {
-        "file": "nx.json",
-        "hash": "9229020301704151908"
-      },
-      {
-        "file": "README.md",
-        "hash": "2725379719001784356"
+        "file": "workspace.json",
+        "hash": "4479697596300840863"
       },
       {
         "file": ".nx/cache/d/server-process.json",
-        "hash": "16672477603913450636"
+        "hash": "457461331708537707"
       },
       {
-        "file": ".gitignore",
-        "hash": "16449976917062451099"
-      },
-      {
-        "file": ".github/workflows/deploy.yml",
-        "hash": "4507879642878011640"
+        "file": "package-lock.json",
+        "hash": "1912906151101988307"
       },
       {
         "file": "tsconfig.node.json",
         "hash": "8586866767247417612"
       },
       {
-        "file": "workspace.json",
-        "hash": "4479697596300840863"
+        "file": "README.md",
+        "hash": "2725379719001784356"
+      },
+      {
+        "file": "package.json",
+        "hash": "12153622752417788785"
+      },
+      {
+        "file": ".github/workflows/deploy.yml",
+        "hash": "1679848260805914071"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "1334268862348420936"
+      },
+      {
+        "file": "nx.json",
+        "hash": "9229020301704151908"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "16449976917062451099"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "746105625540072805"
       }
     ],
     "projectFileMap": {
@@ -95,7 +99,7 @@
         },
         {
           "file": "apps/frontend/src/components/FloatingChat.tsx",
-          "hash": "7352123232601997261"
+          "hash": "17821711715621942244"
         },
         {
           "file": "apps/frontend/src/components/Footer.tsx",
@@ -176,9 +180,14 @@
       ],
       "api": [
         {
+          "file": "apps/api/Dockerfile",
+          "hash": "8170072229684227591"
+        },
+        {
           "file": "apps/api/package.json",
-          "hash": "1272568656855813807",
+          "hash": "4553166165994102570",
           "deps": [
+            "npm:axios",
             "npm:cors",
             "npm:express",
             "npm:@types/cors",
@@ -191,7 +200,7 @@
         },
         {
           "file": "apps/api/src/main.ts",
-          "hash": "13815399166885910058"
+          "hash": "13104179948326330244"
         },
         {
           "file": "apps/api/tsconfig.json",
