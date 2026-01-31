@@ -18,28 +18,16 @@
         "hash": "4479697596300840863"
       },
       {
-        "file": ".nx/cache/d/server-process.json",
-        "hash": "457461331708537707"
+        "file": "tsconfig.node.json",
+        "hash": "8586866767247417612"
       },
       {
         "file": "package-lock.json",
         "hash": "1912906151101988307"
       },
       {
-        "file": "tsconfig.node.json",
-        "hash": "8586866767247417612"
-      },
-      {
-        "file": "README.md",
-        "hash": "2725379719001784356"
-      },
-      {
         "file": "package.json",
         "hash": "12153622752417788785"
-      },
-      {
-        "file": ".github/workflows/deploy.yml",
-        "hash": "1679848260805914071"
       },
       {
         "file": "docker-compose.yml",
@@ -56,6 +44,18 @@
       {
         "file": "tsconfig.json",
         "hash": "746105625540072805"
+      },
+      {
+        "file": ".github/workflows/deploy.yml",
+        "hash": "1679848260805914071"
+      },
+      {
+        "file": "README.md",
+        "hash": "2725379719001784356"
+      },
+      {
+        "file": ".nx/cache/d/server-process.json",
+        "hash": "457461331708537707"
       }
     ],
     "projectFileMap": {
