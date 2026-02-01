@@ -58,7 +58,8 @@ const FloatingChat = () => {
   const callAgentAPI = async (prompt: string) => {
     try {
       setIsLoading(true);
-      const response = await fetch('http://localhost:3000/api/agent/stream', {
+      const apiHost = import.meta.env.VITE_CHAT_API_HOST || 'http://localhost:3000';
+      const response = await fetch(`${apiHost}/api/agent/stream`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
