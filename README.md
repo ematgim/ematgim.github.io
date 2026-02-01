@@ -40,6 +40,7 @@ src/
 - **Custom Hooks**: Lógica reutilizable (scroll tracking)
 - **Constantes Centralizadas**: Datos separados de la presentación
 - **Barrel Exports**: Imports más limpios y organizados
+- **PR Preview Deployments**: Vista previa automática para cada Pull Request ([ver documentación](PR-PREVIEW.md))
 
 ## 🚀 Comandos
 
