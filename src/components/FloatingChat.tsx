@@ -2,15 +2,20 @@ import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { v4 as uuidv4 } from 'uuid';
+import { translations } from '../constants/translations';
+import { useLanguage } from '../contexts/LanguageContext';
 
-export const FloatingChat = () => {
+const FloatingChat = () => {
+  const { language } = useLanguage();
+  const t = translations[language].chat;
   const [isOpen, setIsOpen] = useState(false);
   const [conversationId, setConversationId] = useState<string | null>(null);
   const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean }>>([
-    { text: '¡Hola! ¿En qué puedo ayudarte?', isUser: false }
+    { text: t.initialMessage, isUser: false }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -100,7 +105,7 @@ export const FloatingChat = () => {
       setMessages((prev) => [
         ...prev,
         { 
-          text: 'Lo siento, ocurrió un error al conectar con el servidor. Asegúrate de que está ejecutándose en http://localhost:3000', 
+          text: t.errorMessage, 
           isUser: false 
         }
       ]);
@@ -112,6 +117,8 @@ export const FloatingChat = () => {
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (inputValue.trim() === '') return;
+
+    setShowSuggestions(false);
 
     // Add user message
     const userMessage = inputValue;
@@ -128,6 +135,15 @@ export const FloatingChat = () => {
     await callAgentAPI(userMessage);
   };
 
+  const handleSuggestedQuestion = (question: string) => {
+    setShowSuggestions(false);
+    setInputValue(question);
+    // Trigger send immediately
+    const event = new Event('submit', { bubbles: true });
+    const form = document.querySelector('form');
+    form?.dispatchEvent(event);
+  };
+
   return (
     <>
       {/* Chat Window */}
@@ -140,8 +156,8 @@ export const FloatingChat = () => {
                 <MessageCircle size={18} className="text-[#0a0a0a]" />
               </div>
               <div>
-                <h3 className="font-semibold text-sm">Chat Assistant</h3>
-                <p className="text-xs text-gray-400">En desarrollo</p>
+                <h3 className="font-semibold text-sm">{t.title}</h3>
+                <p className="text-xs text-gray-400">{t.status}</p>
               </div>
             </div>
             <button
@@ -193,6 +209,21 @@ export const FloatingChat = () => {
               </div>
             ))}
             <div ref={messagesEndRef} />
+
+            {/* Suggested Questions */}
+            {showSuggestions && messages.length === 1 && (
+              <div className="mt-4 space-y-2">
+                {[t.suggestedQuestion1, t.suggestedQuestion2, t.suggestedQuestion3].map((question, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleSuggestedQuestion(question)}
+                    className="w-full text-left px-3 py-2 bg-gray-700/50 hover:bg-gray-600 rounded-lg text-xs text-gray-200 transition-colors border border-gray-600 hover:border-green-500/50"
+                  >
+                    💬 {question}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Input Area */}
@@ -202,7 +233,7 @@ export const FloatingChat = () => {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Escribe tu mensaje..."
+                placeholder={t.placeholder}
                 disabled={isLoading}
                 className="flex-1 px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-green-500/50 focus:ring-1 focus:ring-green-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
               />
@@ -234,3 +265,5 @@ export const FloatingChat = () => {
     </>
   );
 };
+
+export { FloatingChat };

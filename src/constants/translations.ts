@@ -71,6 +71,17 @@ export const translations = {
       subtitle: 'He diseñado los sistemas que optimizan operaciones en los sectores más exigentes del mundo. Convirtamos tu desafío técnico en un activo de alto rendimiento.',
       cta: 'Analicemos tu arquitectura',
     },
+    // Chat Section
+    chat: {
+      initialMessage: 'Hola! Soy el asistente de Emilio. Él está ahora mismo orquestando arquitecturas de alta disponibilidad, pero me ha entrenado para ayudarte a resolver cualquier desafío técnico. ¿Buscas escalar un sistema crítico o integrar procesos de negocio complejos?',
+      suggestedQuestion1: '¿Cómo blindas la escalabilidad en entornos industriales?',
+      suggestedQuestion2: 'Háblame de tu experiencia integrando sistemas con SAP o ERPs.',
+      suggestedQuestion3: 'Necesito una consultoría experta, ¿cómo empezamos?',
+      placeholder: 'Escribe tu mensaje...',
+      errorMessage: 'Lo siento, ocurrió un error al conectar con el servidor. Asegúrate de que está ejecutándose en http://localhost:3000',
+      title: 'EMATGIM Bot',
+      status: 'Resolución de fricción técnica en tiempo real'
+    },
   },
   en: {
     // Navbar
@@ -143,6 +154,17 @@ export const translations = {
       title2: 'real solutions?',
       subtitle: 'I\'ve designed the systems that optimize operations in the world\'s most demanding sectors. Let\'s turn your technical challenge into a high-performance asset.',
       cta: 'Book an Architecture Audit',
+    },
+    // Chat Section
+    chat: {
+      initialMessage: 'Hi! I\'m Emilio\'s assistant. He\'s currently orchestrating high-availability architectures, but he\'s trained me to help you solve any technical challenge. Are you looking to scale a critical system or integrate complex business processes?',
+      suggestedQuestion1: 'How do you ensure scalability in industrial environments?',
+      suggestedQuestion2: 'Tell me about your experience integrating SAP or ERP systems.',
+      suggestedQuestion3: 'I need expert consulting, how do we start?',
+      placeholder: 'Type your message...',
+      errorMessage: 'Sorry, an error occurred while connecting to the server. Make sure it\'s running at http://localhost:3000',
+      title: 'EMATGIM Bot',
+      status: 'Real-time technical friction resolution'
     },
   },
 };
