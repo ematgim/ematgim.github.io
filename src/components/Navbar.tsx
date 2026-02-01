@@ -64,7 +64,7 @@ export const Navbar = ({ isScrolled, activeSection }: NavbarProps) => {
             href="#contact" 
             className="px-5 py-2 rounded-full border border-green-500 text-green-500 hover:bg-green-500 hover:text-[#0a0a0a] transition-all text-sm font-bold shadow-[0_0_10px_rgba(34,197,94,0.2)]"
           >
-            {t.nav.consultoria}
+            {language === 'es' ? 'Hablemos' : 'Let\'s Talk'}
           </a>
         </div>
 
