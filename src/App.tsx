@@ -15,12 +15,14 @@ const App = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans selection:bg-green-500/30 selection:text-green-400">
       <Navbar isScrolled={isScrolled} activeSection={activeSection} />
-      <HeroSection />
-      <ServicesSection />
-      <AboutSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <ServicesSection />
+        <AboutSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
       <Footer />
       <FloatingChat />
     </div>

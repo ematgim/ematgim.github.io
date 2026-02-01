@@ -67,7 +67,7 @@ export const ProjectsSection = () => {
                       {copy.title}
                     </h3>
                     <p className="text-gray-400 text-sm mb-4">{copy.description}</p>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                    <p className="text-gray-300 text-sm leading-relaxed mb-6">
                       {copy.longDescription}
                     </p>
 
@@ -98,7 +98,7 @@ export const ProjectsSection = () => {
                         <div className="text-green-400 font-bold text-xl mb-1">
                           {stat.value}
                         </div>
-                        <div className="text-xs text-gray-500 uppercase tracking-widest font-mono">
+                        <div className="text-xs text-gray-300 uppercase tracking-widest font-mono">
                           {getStatLabel(stat.labelKey, stat.label)}
                         </div>
                       </div>
@@ -123,6 +123,7 @@ export const ProjectsSection = () => {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`View ${copy.title} on GitHub`}
                         className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-800 hover:border-green-500/50 rounded-lg font-semibold text-gray-100 transition-colors group/btn"
                       >
                         <Github size={18} className="group-hover/btn:text-green-400 transition-colors" />

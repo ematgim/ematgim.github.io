@@ -23,15 +23,15 @@ export const AboutSection = () => {
             <div className="grid grid-cols-3 gap-6 mt-12">
               <div className="text-center group">
                 <TrendingUp className="text-green-500 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
-                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">{t.about.value1}</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-300">{t.about.value1}</span>
               </div>
               <div className="text-center group">
                 <ShieldCheck className="text-green-500 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
-                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">{t.about.value2}</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-300">{t.about.value2}</span>
               </div>
               <div className="text-center group">
                 <Target className="text-green-500 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
-                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">{t.about.value3}</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-300">{t.about.value3}</span>
               </div>
             </div>
           </div>

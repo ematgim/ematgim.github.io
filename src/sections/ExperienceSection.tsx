@@ -57,7 +57,7 @@ export const ExperienceSection = () => {
               <div className="md:grid md:grid-cols-12 gap-10">
                 <div className="md:col-span-3 mb-6 md:mb-0">
                   <p className="font-mono text-green-500 font-bold text-sm tracking-widest">{job.period}</p>
-                  <p className="text-gray-500 text-[11px] uppercase tracking-[0.2em] font-bold mt-2 leading-tight">{job.company}</p>
+                  <p className="text-gray-300 text-[11px] uppercase tracking-[0.2em] font-bold mt-2 leading-tight">{job.company}</p>
                 </div>
                 <div className="md:col-span-9 p-10 bg-gray-900/30 rounded-[2rem] border border-gray-800 group-hover:border-green-500/30 group-hover:bg-gray-900/40 transition-all shadow-2xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -73,7 +73,7 @@ export const ExperienceSection = () => {
                   <p className="text-gray-400 mb-8 text-lg leading-relaxed font-light">{job.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {job.tags.map(tag => (
-                      <span key={tag} className={`px-4 py-1.5 text-[10px] font-bold font-mono border rounded-full tracking-wider ${['Kubernetes', 'SAP', 'NestJs', 'Architecture', 'Docker Swarm'].includes(tag) ? 'bg-green-500/5 border-green-500/40 text-green-400' : 'bg-black border-gray-800 text-gray-500'}`}>
+                      <span key={tag} className={`px-4 py-1.5 text-[10px] font-bold font-mono border rounded-full tracking-wider ${['Kubernetes', 'SAP', 'NestJs', 'Architecture', 'Docker Swarm'].includes(tag) ? 'bg-green-500/5 border-green-500/40 text-green-400' : 'bg-black border-gray-800 text-gray-300'}`}>
                         {tag}
                       </span>
                     ))}

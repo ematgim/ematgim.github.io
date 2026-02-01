@@ -23,10 +23,10 @@ export const ContactSection = () => {
             {t.contact.cta} <ExternalLink size={24} />
           </a>
           <div className="flex gap-4">
-            <a href="https://www.linkedin.com/in/emilio-javier-mateo-gimenez/" target="_blank" rel="noopener noreferrer" className="p-5 bg-gray-900 rounded-2xl border border-gray-800 hover:text-green-500 hover:border-green-500/50 transition-all shadow-xl">
+            <a href="https://www.linkedin.com/in/emilio-javier-mateo-gimenez/" target="_blank" rel="noopener noreferrer" aria-label="Visit Emilio's LinkedIn profile" className="p-5 bg-gray-900 rounded-2xl border border-gray-800 hover:text-green-500 hover:border-green-500/50 transition-all shadow-xl">
               <Linkedin size={28} />
             </a>
-            <a href="https://github.com/ematgim" target="_blank" rel="noopener noreferrer" className="p-5 bg-gray-900 rounded-2xl border border-gray-800 hover:text-green-500 hover:border-green-500/50 transition-all shadow-xl">
+            <a href="https://github.com/ematgim" target="_blank" rel="noopener noreferrer" aria-label="Visit Emilio's GitHub profile" className="p-5 bg-gray-900 rounded-2xl border border-gray-800 hover:text-green-500 hover:border-green-500/50 transition-all shadow-xl">
               <Github size={28} />
             </a>
           </div>
