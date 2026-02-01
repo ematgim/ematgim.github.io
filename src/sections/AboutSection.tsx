@@ -11,7 +11,7 @@ export const AboutSection = () => {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-              <span className="text-green-500 font-mono">04.</span> 
+              <span className="text-green-500 font-mono">02.</span> 
               {t.about.title}
             </h2>
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">

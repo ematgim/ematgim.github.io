@@ -47,7 +47,7 @@ export const ExperienceSection = () => {
     <section id="experience" className="py-24 bg-black relative">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold mb-20 flex items-center gap-4">
-          <span className="text-green-500 font-mono text-xl">02.</span> 
+          <span className="text-green-500 font-mono text-xl">03.</span> 
           {t.experience.title}
         </h2>
 

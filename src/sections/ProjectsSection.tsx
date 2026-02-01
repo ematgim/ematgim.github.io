@@ -42,7 +42,7 @@ export const ProjectsSection = () => {
       <div className="max-w-6xl mx-auto px-6">
         {/* Title */}
         <h2 className="text-3xl font-bold mb-16 flex items-center gap-3">
-          <span className="text-green-500 font-mono">03.</span>
+          <span className="text-green-500 font-mono">04.</span>
           {translation.title}
         </h2>
 
