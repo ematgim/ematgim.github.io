@@ -1,32 +1,131 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import { v4 as uuidv4 } from 'uuid';
 
 export const FloatingChat = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [conversationId, setConversationId] = useState<string | null>(null);
   const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean }>>([
     { text: '¡Hola! ¿En qué puedo ayudarte?', isUser: false }
   ]);
   const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const handleToggleChat = () => {
+    if (!isOpen && !conversationId) {
+      // Generate new conversationId when opening chat for first time
+      setConversationId(uuidv4());
+    }
     setIsOpen(!isOpen);
   };
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const callAgentAPI = async (prompt: string) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('http://localhost:3000/api/agent/stream', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          prompt,
+          conversationId 
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      // Handle SSE streaming response
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      let fullResponse = '';
+      let buffer = '';
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          
+          // Keep the last incomplete line in the buffer
+          buffer = lines[lines.length - 1];
+          
+          for (let i = 0; i < lines.length - 1; i++) {
+            const line = lines[i].trim();
+            
+            if (line.startsWith('data:')) {
+              const dataStr = line.substring(5).trim();
+              try {
+                const data = JSON.parse(dataStr);
+                
+                // Handle chunk events
+                if (data.type === 'token' && data.data) {
+                  fullResponse += data.data;
+                  
+                  // Update message in real-time
+                  setMessages((prev) => {
+                    const lastMessage = prev[prev.length - 1];
+                    if (lastMessage && !lastMessage.isUser) {
+                      return [
+                        ...prev.slice(0, -1),
+                        { ...lastMessage, text: fullResponse }
+                      ];
+                    }
+                    return [...prev, { text: fullResponse, isUser: false }];
+                  });
+                }
+              } catch (e) {
+                console.error('Error parsing SSE data:', e);
+              }
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error calling API:', error);
+      setMessages((prev) => [
+        ...prev,
+        { 
+          text: 'Lo siento, ocurrió un error al conectar con el servidor. Asegúrate de que está ejecutándose en http://localhost:3000', 
+          isUser: false 
+        }
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (inputValue.trim() === '') return;
 
     // Add user message
-    setMessages([...messages, { text: inputValue, isUser: true }]);
+    const userMessage = inputValue;
+    setMessages([...messages, { text: userMessage, isUser: true }]);
     setInputValue('');
 
-    // Simulate a bot response (placeholder for future API integration)
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        { text: 'Gracias por tu mensaje. Pronto integraré un agente para responder.', isUser: false }
-      ]);
-    }, 1000);
+    // Add loading placeholder
+    setMessages((prev) => [
+      ...prev,
+      { text: '...', isUser: false }
+    ]);
+
+    // Call API with streaming
+    await callAgentAPI(userMessage);
   };
 
   return (
@@ -68,10 +167,32 @@ export const FloatingChat = () => {
                       : 'bg-gray-800 text-gray-100 rounded-bl-none'
                   }`}
                 >
-                  <p className="text-sm">{message.text}</p>
+                  {message.isUser ? (
+                    <p className="text-sm">{message.text}</p>
+                  ) : (
+                    <div className="text-sm prose prose-invert prose-sm max-w-none">
+                      <ReactMarkdown
+                        components={{
+                          p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                          strong: ({ children }) => <strong className="font-bold text-green-400">{children}</strong>,
+                          em: ({ children }) => <em className="italic text-gray-300">{children}</em>,
+                          ul: ({ children }) => <ul className="list-disc list-inside mb-2 pl-2 space-y-1">{children}</ul>,
+                          ol: ({ children }) => <ol className="list-decimal list-inside mb-2 pl-2 space-y-1">{children}</ol>,
+                          li: ({ children }) => <li className="text-sm">{children}</li>,
+                          code: ({ children }) => <code className="bg-gray-900 px-2 py-1 rounded text-green-400 text-xs">{children}</code>,
+                          h1: ({ children }) => <h1 className="font-bold text-lg mb-2">{children}</h1>,
+                          h2: ({ children }) => <h2 className="font-bold text-base mb-2">{children}</h2>,
+                          h3: ({ children }) => <h3 className="font-bold text-sm mb-1">{children}</h3>,
+                        }}
+                      >
+                        {message.text}
+                      </ReactMarkdown>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input Area */}
@@ -82,11 +203,13 @@ export const FloatingChat = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Escribe tu mensaje..."
-                className="flex-1 px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-green-500/50 focus:ring-1 focus:ring-green-500/50"
+                disabled={isLoading}
+                className="flex-1 px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-green-500/50 focus:ring-1 focus:ring-green-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
               />
               <button
                 type="submit"
-                className="p-2 bg-green-500 hover:bg-green-600 rounded-lg transition-colors shadow-[0_0_10px_rgba(34,197,94,0.2)]"
+                disabled={isLoading}
+                className="p-2 bg-green-500 hover:bg-green-600 rounded-lg transition-colors shadow-[0_0_10px_rgba(34,197,94,0.2)] disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Enviar mensaje"
               >
                 <Send size={20} className="text-[#0a0a0a]" />
