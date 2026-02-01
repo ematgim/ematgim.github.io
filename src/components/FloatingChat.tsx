@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { v4 as uuidv4 } from 'uuid';
 import { translations } from '../constants/translations';
 import { useLanguage } from '../contexts/LanguageContext';
+import '../styles/chat-scroll.css';
 
 const FloatingChat = () => {
   const { language } = useLanguage();
@@ -192,7 +193,7 @@ const FloatingChat = () => {
           </div>
 
           {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+          <div className="chat-scroll-container flex-1 overflow-y-auto p-4 space-y-3">
             {messages.map((message, index) => (
               <div
                 key={index}
