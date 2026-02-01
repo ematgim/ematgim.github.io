@@ -26,7 +26,10 @@ export const ServicesSection = () => {
     <section id="services" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold mb-4">{t.services.title}</h2>
+          <h2 className="text-4xl font-bold mb-4">
+            <span className="text-green-500 font-mono mr-3">01.</span>
+            {t.services.title}
+          </h2>
           <div className="h-1 w-24 bg-green-500 mx-auto rounded-full" />
         </div>
 

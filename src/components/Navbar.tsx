@@ -43,14 +43,17 @@ export const Navbar = ({ isScrolled, activeSection }: NavbarProps) => {
           <NavLink href="#home" isActive={activeSection === 'home'}>
             {t.nav.inicio}
           </NavLink>
-          <NavLink href="#about" isActive={activeSection === 'about'}>
-            {t.nav.filosofia}
-          </NavLink>
           <NavLink href="#services" isActive={activeSection === 'services'}>
             {t.nav.expertise}
           </NavLink>
+          <NavLink href="#about" isActive={activeSection === 'about'}>
+            {t.nav.filosofia}
+          </NavLink>
           <NavLink href="#experience" isActive={activeSection === 'experience'}>
             {t.nav.trayectoria}
+          </NavLink>
+          <NavLink href="#projects" isActive={activeSection === 'projects'}>
+            {t.nav.proyectos}
           </NavLink>
           <button
             onClick={toggleLanguage}

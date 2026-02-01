@@ -6,6 +6,7 @@ export const translations = {
       filosofia: 'Filosofía',
       expertise: 'Expertise',
       trayectoria: 'Trayectoria',
+      proyectos: 'Proyectos',
       consultoria: 'Consultoría',
     },
     // Hero Section
@@ -71,6 +72,22 @@ export const translations = {
       subtitle: 'He diseñado los sistemas que optimizan operaciones en los sectores más exigentes del mundo. Convirtamos tu desafío técnico en un activo de alto rendimiento.',
       cta: 'Analicemos tu arquitectura',
     },
+    // Projects Section
+    projects: {
+      title: 'Soluciones Técnicas en Producción',
+      agentTitle: 'EMATGIM AI Agent',
+      agentDesc: 'Asistente inteligente especializado en fricción técnica empresarial',
+      agentLongDesc: 'Agente de IA con arquitectura RAG (Retrieval-Augmented Generation) entrenado con mi contexto profesional. Ofrece respuestas precisas sobre experiencia en sistemas de misión crítica, integración enterprise y escalabilidad operativa.',
+      portfolioTitle: 'Portfolio EMATGIM',
+      portfolioDesc: 'Portfolio interactivo con secciones dinámicas, i18n y diseño orientado a conversión.',
+      portfolioLongDesc: 'Este sitio es un portfolio técnico de alto impacto construido con React + Vite y Tailwind. Incluye secciones estratégicas, navegación inteligente, y un chat con agente de IA para consultas en tiempo real.',
+      viewProject: 'Consultar Agente',
+      precision: 'Precisión',
+      latency: 'Latencia',
+      uptime: 'Disponibilidad',
+      highlightHtml: '¿Tu proyecto requiere <span class="text-green-400 font-semibold">fricción técnica resuelta</span>?',
+      highlightCta: 'Hablemos de tu arquitectura'
+    },
     // Chat Section
     chat: {
       initialMessage: 'Hola! Soy el asistente de Emilio. Él está ahora mismo orquestando arquitecturas de alta disponibilidad, pero me ha entrenado para ayudarte a resolver cualquier desafío técnico. ¿Buscas escalar un sistema crítico o integrar procesos de negocio complejos?',
@@ -96,6 +113,7 @@ export const translations = {
       filosofia: 'Philosophy',
       expertise: 'Expertise',
       trayectoria: 'Experience',
+      proyectos: 'Projects',
       consultoria: 'Consulting',
     },
     // Hero Section
@@ -153,6 +171,22 @@ export const translations = {
       exp4Period: 'Jul 2020 - Aug 2022',
       exp4Milestone: 'Highly Scalable E-commerce Engine',
       exp4Desc: 'Creation of a reusable multitenant engine integrated into the corporate ERP. Extreme optimization of Oracle procedures and PL/SQL transactional logic.',
+    },
+    // Projects Section
+    projects: {
+      title: 'Technical Solutions in Production',
+      agentTitle: 'EMATGIM AI Agent',
+      agentDesc: 'Intelligent assistant specialized in enterprise technical friction',
+      agentLongDesc: 'AI agent built on a RAG (Retrieval-Augmented Generation) architecture and trained with my professional context. It delivers precise answers about mission-critical systems, enterprise integration, and operational scalability.',
+      portfolioTitle: 'EMATGIM Portfolio',
+      portfolioDesc: 'Interactive portfolio with dynamic sections, i18n, and conversion-focused design.',
+      portfolioLongDesc: 'This site is a high-impact technical portfolio built with React + Vite and Tailwind. It includes strategic sections, smart navigation, and an AI agent chat for real-time consultation.',
+      viewProject: 'Consult Agent',
+      precision: 'Accuracy',
+      latency: 'Latency',
+      uptime: 'Availability',
+      highlightHtml: 'Does your project require <span class="text-green-400 font-semibold">technical friction resolved</span>?',
+      highlightCta: 'Let’s talk about your architecture'
     },
     // Contact Section
     contact: {

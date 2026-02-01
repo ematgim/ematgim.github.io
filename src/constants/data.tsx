@@ -10,11 +10,13 @@ import {
   Battery,
   Anchor,
   Dna,
-  Package
+  Package,
+  MessageSquare,
+  Layout
 } from 'lucide-react';
-import { ServiceProps, ExperienceProps, TechStackProps } from '../types';
+import { ServiceProps, ExperienceProps, TechStackProps, ProjectProps } from '../types';
 
-export const SECTIONS = ['home', 'about', 'services', 'experience', 'contact'];
+export const SECTIONS = ['home', 'services', 'about', 'experience', 'projects', 'contact'];
 
 export const TECH_STACK: TechStackProps[] = [
   { name: 'Angular / Vue.js', icon: <Layers className="text-red-500" /> },
@@ -79,5 +81,32 @@ export const EXPERIENCE: ExperienceProps[] = [
     desc: "Creación de un motor multitenant reutilizable integrado en el ERP corporativo. Optimización extrema de procedimientos en Oracle y lógica transaccional PL/SQL.",
     tags: ["Oracle", "PL/SQL", "Vue.js", "Spring"],
     icon: <Package className="text-orange-400" />
+  }
+];
+
+export const PROJECTS: ProjectProps[] = [
+  {
+    translationKey: "portfolio",
+    title: "EMATGIM Portfolio",
+    description: "Portfolio interactivo con secciones dinámicas, i18n y diseño orientado a conversión.",
+    longDescription: "Este sitio es un portfolio técnico de alto impacto construido con React + Vite y Tailwind. Incluye secciones estratégicas, navegación inteligente, y un chat con agente de IA para consultas en tiempo real.",
+    tags: ["React", "Vite", "Tailwind", "i18n", "UI/UX"],
+    featured: true,
+    link: null,
+    github: "https://github.com/ematgim/ematgim.github.io",
+    image: <Layout className="text-green-500" size={48} />,
+    stats: []
+  },
+  {
+    translationKey: "agent",
+    title: "EMATGIM AI Agent",
+    description: "Asistente virtual interactivo diseñado para responder preguntas sobre mi trayectoria profesional, stack tecnológico y filosofía de trabajo.",
+    longDescription: "Implementación de un agente de IA con arquitectura RAG (Retrieval-Augmented Generation). Entrenado específicamente con mi contexto profesional para ofrecer respuestas precisas e inmediatas sobre mi experiencia en proyectos de misión crítica, evitando alucinaciones y facilitando el acceso a la información de mi perfil.",
+    tags: ["LLM Integration", "Prompt Engineering", "Context Injection", "Real-time Streaming", "MongoDB"],
+    featured: true,
+    link: null, // O null si prefieres que no lleve a ningún sitio específico
+    github: "https://github.com/ematgim/portfolio-api", // Ahora sí puedes poner el repo si quieres, el código es limpio,
+    image: <MessageSquare className="text-green-500" size={48} />,
+    stats: []
   }
 ];

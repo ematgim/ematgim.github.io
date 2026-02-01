@@ -24,3 +24,20 @@ export interface TechStackProps {
   name: string;
   icon: React.ReactNode;
 }
+
+export interface ProjectProps {
+  translationKey?: string;
+  title: string;
+  description: string;
+  longDescription: string;
+  tags: string[];
+  featured: boolean;
+  link: string | null;
+  github: string | null;
+  image: React.ReactNode;
+  stats?: Array<{
+    label?: string;
+    labelKey?: 'precision' | 'latency' | 'uptime';
+    value: string;
+  }>;
+}
