@@ -31,6 +31,8 @@ jobs:
         run: npm ci
       
       - name: Build
+        env:
+          VITE_CHAT_API_HOST: ${{ secrets.VITE_CHAT_API_HOST }}
         run: npm run build
       
       - name: Setup Pages
