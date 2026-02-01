@@ -14,7 +14,7 @@ export const AboutSection = () => {
               <span className="text-green-500 font-mono">02.</span> 
               {t.about.title}
             </h2>
-            <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
+            <div className="space-y-6 text-gray-200 text-lg leading-relaxed">
               <p dangerouslySetInnerHTML={{ __html: t.about.paragraph1 }} />
               <p dangerouslySetInnerHTML={{ __html: t.about.paragraph2 }} />
               <p dangerouslySetInnerHTML={{ __html: t.about.paragraph3 }} />
