@@ -80,7 +80,13 @@ export const translations = {
       placeholder: 'Escribe tu mensaje...',
       errorMessage: 'Lo siento, ocurrió un error al conectar con el servidor. Asegúrate de que está ejecutándose en http://localhost:3000',
       title: 'EMATGIM Bot',
-      status: 'Resolución de fricción técnica en tiempo real'
+      status: 'Resolución de fricción técnica en tiempo real',
+      tooltipMessages: [
+        '¿Tu arquitectura está lista para escalar?',
+        'Consulta disponibilidad para proyectos críticos.',
+        'Especialista en integración con SAP y ERPs.',
+        '¿Hablamos de soluciones, no solo de código?'
+      ]
     },
   },
   en: {
@@ -164,7 +170,13 @@ export const translations = {
       placeholder: 'Type your message...',
       errorMessage: 'Sorry, an error occurred while connecting to the server. Make sure it\'s running at http://localhost:3000',
       title: 'EMATGIM Bot',
-      status: 'Real-time technical friction resolution'
+      status: 'Real-time technical friction resolution',
+      tooltipMessages: [
+        'Is your architecture ready to scale?',
+        'Availability consultation for critical projects.',
+        'Expert in SAP and ERP integration.',
+        'Let\'s talk about solutions, not just code?'
+      ]
     },
   },
 };

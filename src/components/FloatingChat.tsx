@@ -16,6 +16,8 @@ const FloatingChat = () => {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [tooltipIndex, setTooltipIndex] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -25,6 +27,25 @@ const FloatingChat = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    // Mostrar tooltip después de 3 segundos si el chat no está abierto
+    const tooltipTimer = setTimeout(() => {
+      if (!isOpen) {
+        setShowTooltip(true);
+      }
+    }, 3000);
+
+    // Cambiar mensaje del tooltip cada 5 segundos
+    const rotateTimer = setInterval(() => {
+      setTooltipIndex((prev) => (prev + 1) % t.tooltipMessages.length);
+    }, 5000);
+
+    return () => {
+      clearTimeout(tooltipTimer);
+      clearInterval(rotateTimer);
+    };
+  }, [isOpen, t.tooltipMessages.length]);
 
   const handleToggleChat = () => {
     if (!isOpen && !conversationId) {
@@ -262,6 +283,22 @@ const FloatingChat = () => {
           <MessageCircle size={24} className="text-[#0a0a0a] group-hover:scale-110 transition-transform" />
         )}
       </button>
+
+      {/* Tooltip */}
+      {showTooltip && !isOpen && (
+        <div className="fixed bottom-24 right-6 bg-white/70 rounded-lg shadow-[0_0_20px_rgba(34,197,94,0.4),0_10px_25px_rgba(0,0,0,0.2)] p-4 max-w-[260px] z-40 animate-in fade-in slide-in-from-bottom-3 backdrop-blur-md border border-green-500/50">
+          <div className="flex items-start justify-between gap-2">
+            <p className="text-sm font-medium text-gray-900 leading-relaxed flex-1">{t.tooltipMessages[tooltipIndex]}</p>
+            <button
+              onClick={() => setShowTooltip(false)}
+              className="flex-shrink-0 p-1 hover:bg-gray-200 rounded-full transition-all"
+              aria-label="Cerrar"
+            >
+              <X size={16} className="text-gray-600 hover:text-gray-900" />
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };
