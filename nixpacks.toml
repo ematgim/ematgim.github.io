@@ -1,0 +1,13 @@
+[phases.setup]
+# Ensure dependencies are installed
+nixPkgs = ["nodejs_20"]
+
+[phases.install]
+cmds = ["npm install"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+# Serve the Vite build output
+cmd = "npm run preview -- --host 0.0.0.0 --port $PORT"
