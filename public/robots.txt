@@ -1,0 +1,17 @@
+# Allow all bots to crawl the site
+User-agent: *
+Allow: /
+Disallow: 
+
+# Specific rules for common bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://ematgim.github.io/sitemap.xml
+
+# Crawl delay to be respectful
+Crawl-delay: 1

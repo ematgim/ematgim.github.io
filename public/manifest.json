@@ -1,0 +1,23 @@
+{
+  "name": "Emilio Mateo - Software Architect Portfolio",
+  "short_name": "Emilio Mateo",
+  "description": "Portfolio profesional de Emilio Mateo - Software Architect & Full Stack Engineer especializado en React, TypeScript, Node.js y arquitecturas empresariales",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#22c55e",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "portfolio", "technology"],
+  "lang": "es",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": []
+}

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Página no encontrada | Emilio Mateo</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background: #0a0a0a;
+        color: #f3f4f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+      .container {
+        text-align: center;
+        max-width: 600px;
+      }
+      .error-code {
+        font-size: 120px;
+        font-weight: bold;
+        background: linear-gradient(to right, #22c55e, #10b981);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
+        line-height: 1;
+      }
+      h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+        color: #ffffff;
+      }
+      p {
+        font-size: 18px;
+        color: #9ca3af;
+        margin-bottom: 32px;
+        line-height: 1.6;
+      }
+      .btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: #22c55e;
+        color: #0a0a0a;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s;
+        font-size: 16px;
+      }
+      .btn:hover {
+        background: #16a34a;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+      }
+      .links {
+        margin-top: 40px;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .link {
+        color: #22c55e;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+      .link:hover {
+        color: #16a34a;
+      }
+      @media (max-width: 640px) {
+        .error-code {
+          font-size: 80px;
+        }
+        h1 {
+          font-size: 24px;
+        }
+        p {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="error-code">404</div>
+      <h1>Página no encontrada</h1>
+      <p>
+        Lo siento, la página que buscas no existe o ha sido movida.
+        Pero no te preocupes, hay mucho más que explorar en mi portfolio.
+      </p>
+      <a href="/" class="btn">Volver al inicio</a>
+      
+      <div class="links">
+        <a href="/#about" class="link">Sobre mí</a>
+        <a href="/#experience" class="link">Experiencia</a>
+        <a href="/#projects" class="link">Proyectos</a>
+        <a href="/#contact" class="link">Contacto</a>
+      </div>
+    </div>
+    
+    <script>
+      // Redirect to home after 10 seconds
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 10000);
+    </script>
+  </body>
+</html>
