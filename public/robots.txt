@@ -11,7 +11,7 @@ User-agent: Bingbot
 Allow: /
 
 # Sitemap location
-Sitemap: https://ematgim.github.io/sitemap.xml
+Sitemap: https://ematgim.dev/sitemap.xml
 
 # Crawl delay to be respectful
 Crawl-delay: 1
