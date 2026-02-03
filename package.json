@@ -24,7 +24,6 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "validate-seo": "./validate-seo.sh"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
